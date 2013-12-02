@@ -1,0 +1,261 @@
+// Place all the styles related to the Focus controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html {
+	
+	// max-height:300px;
+	margin:0;
+	padding:0;
+
+	
+}
+
+body {
+	max-width:320px;
+	width:320px;
+	overflow:hidden;
+	height:548px;
+	margin:0;
+	padding:0;
+	font-family:'futura';
+	font-weight:100;
+	position:relative;
+	top:0;
+}
+
+#main-container {
+	max-width:320px;
+	width:320px;
+	overflow:hidden;
+	height:548px;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+
+}
+
+#main-inner {
+	max-width:960px;
+	width:960px;
+	overflow:hidden;
+	height:548px;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+}
+
+#liftmain {
+	overflow:hidden;
+	height:548px;
+	width:320px;
+	background:url('liftmain.png');
+	background-size:100% 100%;
+	z-index:1;
+}
+
+#focus-bar-main a {
+	color:#1D77EF;
+	float:right;
+	margin-top:15px;
+	margin-right:20px;
+	text-decoration:none;
+}
+
+#calibrate {
+	overflow:hidden;
+	height:548px;
+	width:320px;
+	position:absolute;
+	top:0;
+	left:321px;
+	float:left;
+	z-index:2;
+}
+
+#calibrate-bar {
+	display:inline-block;
+	width:100%;
+}
+
+
+.left-link, .right-link {
+	display:inline-block;
+	z-index:1;
+}
+
+
+.left-link {
+	// float:left;
+}
+
+.right-link {
+	float:right;
+}
+
+.left-link a {
+	color:#1D77EF;
+	float:left;
+	margin-top:15px;
+	margin-left:20px;
+	text-decoration:none;
+}
+
+.middle-title {
+	font-size: 24px;
+	float: left;
+	margin-top: -30px;
+	width: 100%;
+	text-align: center;
+	z-index:-1;
+}
+
+.right-link a {
+	color:#1D77EF;
+	float:right;
+	margin-top:-28px;
+	margin-right:20px;
+	text-decoration:none;
+}
+
+#calibrate-instructions {
+	margin-top:70px;
+}
+
+#calibrate-instructions div {
+	font-size:14px;
+	margin:10px 15px 70px;
+}
+
+#calibrate-start {
+	position:absolute;
+	bottom:30px;
+	font-size:30px;
+	text-align:center;
+	width:100%;
+
+}
+
+#calibrate-start a {
+	color:#79c650;
+	text-decoration:none;
+}
+
+#calibrate2 {
+	display:none;
+	overflow:hidden;
+	height:548px;
+	width:320px;
+	position:absolute;
+	top:0;
+	left:321px;
+	float:left;
+	z-index:3;
+}
+
+#calibrate2-bar {
+	display:inline-block;
+	width:100%;
+}
+
+#calibrate2-bar .middle-title {
+	margin-top: 10px;
+}
+
+
+
+#calibrate2-instructions {
+	margin-top:130px;
+	text-align:center;
+}
+
+#calibrate2-instructions div {
+	font-size:20px;
+	margin:80px 15px 30px;
+}
+
+#dots {
+
+	text-align:center;
+	display:inline-block;
+	margin:0px !important;
+}
+
+#dots div{
+	margin-top:0px;
+	float:left;
+	height:20px;
+	width:20px;
+	border-radius:100px;
+	border:1px solid black;
+}
+
+#calibrate2-cancel {
+	position:absolute;
+	bottom:30px;
+	font-size:30px;
+	text-align:center;
+	width:100%;
+
+}
+
+#calibrate2-cancel a {
+	color:grey;
+	text-decoration:none;
+}
+
+#body-container {
+	display:none;
+	// width:300px;
+	// overflow:hidden;
+	height:548px;
+	position:absolute;
+	top:0;
+	left:321px;
+	width:320px;
+	// background:green;
+}
+
+
+#body-container-bar {
+	display:inline-block;
+	width:100%;
+}
+
+#canvas-container {
+	display:none;
+	position:absolute;
+	// top:100px;
+	// text-align:center;
+	width:320px;
+	height:400px;
+}
+
+#focus-instructions {
+	font-size:12px;
+	width:150px;
+	height:150px;
+	margin-left:auto;
+	margin-right:auto;
+	background:#eee;
+	border-radius:300px;
+	color:#666;
+	position:absolute;
+	top:130px;
+	left:85px;
+	text-align:center;
+}
+
+#focus-instructions div {
+	
+	padding:40px 10px;
+}
+
+canvas {
+	margin-left:auto;
+	margin-right:auto;
+	width:100%;
+}
