@@ -29,11 +29,20 @@ $(document).ready(function() {
                     if (i <= 5) {
                     fillDots(i);
                     } else {
-                        $("#calibrate2").fadeOut();
-                        $("#body-container").fadeIn();
-                        $("#canvas-container").delay(1000).show(0,function(){
-                        animateCircle(1);
+                        $("#calibrate2-bar .middle-title").fadeOut();
+                        $("#calibrate2-cancel").fadeOut();
+                        $("#calibrate2-instructions").fadeOut(function() {
+                          $("#calibrate2-instructions").html("<div>Starting Focus Mode</div>").delay(500).fadeIn();
+                          $("#calibrate2-instructions").html("<div>Starting Focus Mode</div>").delay(500).fadeIn();       
+                          $("#calibrate2").delay(2000).fadeOut();
+                          $("#body-container").delay(2000).fadeIn();
+                          $("#canvas-container").delay(4000).show(0,function(){
+                            $("#canvas").click(function() {
+                              animateCircle(1);
+                            });
+                          });
                         });
+                    
                     }
                   });
                 }
@@ -50,6 +59,7 @@ $(document).ready(function() {
 });
 
 var cloneCount = 0;
+var timeleft = 5;
 
 function animateCircle(number) {
      (function() {
@@ -57,14 +67,19 @@ function animateCircle(number) {
                                       window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
           window.requestAnimationFrame = requestAnimationFrame;
         })();
-         
-        
+        var time=1;
+        timer();
+        function timer() {
+
+             
+                   
+            }   
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         var x = canvas.width / 2;
         var y = canvas.height / 2;
         var radius = 75;
-        var endPercent = 100;
+        var endPercent = 60;
         var curPerc = 0;
         var counterClockwise = false;
         var circ = Math.PI * 2;
@@ -124,13 +139,27 @@ function animateCircle(number) {
              context.stroke();
 
              curPerc++;
+             // $("#focus-instructions").fadeOut("");
+             // $("#focus-instructions div").fadeOut("");
              // $("#focus-instructions div").html(curPerc + " seconds");
              if (curPerc <= endPercent) {
                  requestAnimationFrame(function () {
-                     animate(curPerc / 100)
+                   
+                
+                   
+                    setTimeout(function() {
+                        if (time >1) var sec = "seconds";
+                        else var sec = "second";
+                          $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"" +sec).show();
+                          time++;
+                         animate(curPerc / 60);
+                    }, 1000)
+                     // animate(curPerc / 60)
                  },1000);
              } else {
                 context.fill();
+                time=0;
+
                 // context.stroke();
                $('#canvas')
                   .clone()
@@ -138,7 +167,7 @@ function animateCircle(number) {
                   .appendTo("#canvas-container")
                   .css("position","absolute")
                   .css("top","0px");
-                 var destcanvas = document.getElementById('canvas'+cloneCount);
+                var destcanvas = document.getElementById('canvas'+cloneCount);
                 var destcontext = destcanvas.getContext('2d');
                 destcontext.drawImage(canvas, 0, 0);
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -149,7 +178,8 @@ function animateCircle(number) {
                 //  },1000);
                 // $( "#canvas1" ).clone().appendTo( "#canvas1" );
                 var mL = 10+50*cloneCount;
-                  
+                $("#focus-instructions").show();
+                   $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"seconds" ).show();
 
                $("#canvas"+cloneCount).animate({
                     marginTop: "350px",
@@ -157,9 +187,15 @@ function animateCircle(number) {
                     height: "50px",
                     width: "50px"
                   }, 1000, function() {
-                    cloneCount++;
-                    if (cloneCount < 6) {
-                    animateCircle(1);
+                cloneCount++;
+
+
+                if (cloneCount < 6) {
+                   $("#time-left strong").fadeOut(function(){
+                        $("#time-left strong").html(timeleft--).fadeIn();
+                         animateCircle(1);
+                   });
+                 
                 }
                     // Animation complete.
                 });
