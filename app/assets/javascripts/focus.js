@@ -4,21 +4,35 @@ $(document).ready(function() {
     $("#focus-bar-main a").click(function() {
         event.preventDefault();
         $("#main-inner").animate({"left":"-320px"}, "slow");
+        $("#starting").delay(500).fadeIn(500);
+         $("#starting").delay(2000).fadeOut(500);
+         $("#main-body").delay(3500).fadeIn(500);
     });
 
-    $("#calibrate-bar .left-link a").click(function() {
+    $("#body-container-bar .left-link a").click(function() {
         event.preventDefault();
+           // $("#starting").hide();
+        $("#main-body").fadeOut();
         $("#main-inner").animate({"left":"0px"}, "slow");
+
     });
 
-    $("#calibrate-bar .right-link a").click(function() {
+    $("#body-container-bar .right-link a").click(function() {
         event.preventDefault();
+        $("#main-body").fadeOut();
+        $("#calibrate").fadeIn();
         // $("#main-inner").animate({"left":"0px"}, "slow");
     });
        $("#calibrate-start a").click(function() {
             event.preventDefault();
               // $("#main-inner").animate({"left":"-640px"}, "slow");
               $("#calibrate").fadeOut();
+              $("#calibrate-finish").hide();
+              $("#dots div").css("background-color","white");
+
+                         $("#calibrate2-instructions").show();
+                          $("#calibrate2-cancel").show();
+
               $("#calibrate2").fadeIn();
               fillDots(1);
               function fillDots(i) {
@@ -29,16 +43,20 @@ $(document).ready(function() {
                     if (i <= 5) {
                     fillDots(i);
                     } else {
-                        $("#calibrate2-bar .middle-title").fadeOut();
+                        // $("#calibrate2-bar .middle-title").fadeOut();
                         $("#calibrate2-cancel").fadeOut();
                         $("#calibrate2-instructions").fadeOut(function() {
-                          $("#calibrate2-instructions").html("<div>Starting Focus Mode</div>").delay(500).fadeIn();
-                          $("#calibrate2-instructions").html("<div>Starting Focus Mode</div>").delay(500).fadeIn();       
-                          $("#calibrate2").delay(2000).fadeOut();
-                          $("#body-container").delay(2000).fadeIn();
+                          // $("#calibrate2-instructions").html("<div>Finished Calibrating</div>").delay(500).fadeIn();
+                        $("#calibrate-finish").fadeIn();
+                         $("#calibrate2").delay(2000).fadeOut();
+
+
+
+                          $("#main-body").delay(2000).fadeIn();
                           $("#canvas-container").delay(4000).show(0,function(){
                             $("#canvas").click(function() {
-                              animateCircle(1);
+                              // animateCircle(1);
+                              shakeCircle(1);
                             });
                           });
                         });
@@ -207,6 +225,32 @@ function animateCircle(number) {
 
          animate();
     }
+
+  function shakeCircle(number) {
+       $("#focus-instructions").css("background","transparent");
+       $("#focus-instructions").html("<div class='straightenup'>Sit up straight!</div>");
+
+     $("#main-container").delay(0).animate({ 
+          backgroundColor:"#ffaf4d"
+      }, 3000, "linear");
+
+     $("#main-container").delay(0).animate({
+          backgroundColor:"#ffd19a"
+      }, 3000, "linear");
+
+     $("#main-container").delay(0).animate({
+          backgroundColor:"white"
+      }, 3000, "linear");
+     
+     
+       function shake(current) {
+
+          
+       }
+
+       shake();
+  }
+
 
 
 // /////////////////////////////////////////////////////
