@@ -6,5 +6,8 @@ class FocusController < ApplicationController
     
   end
 
+  def old
+  end
+
 
 end

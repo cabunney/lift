@@ -15,7 +15,7 @@ html {
 body {
 	max-width:320px;
 	width:320px;
-	overflow:hidden;
+	// overflow:hidden;
 	height:548px;
 	margin:0;
 	padding:0;
@@ -24,6 +24,143 @@ body {
 	position:relative;
 	top:0;
 }
+
+
+#main {
+	max-width:320px;
+	width:320px;
+	overflow:hidden;
+	height:548px;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+}
+
+#inner {
+	max-width:640px;
+	width:640px;
+	overflow:hidden;
+	height:548px;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+	// background:image-url('ggbridge.jpg');
+	background:whitesmoke;
+	background-size:cover;
+}
+
+#lift {
+	// display:none;
+	overflow:hidden;
+	height:548px;
+	width:320px;
+	position:absolute;
+	top:0;
+	left:0px;
+	float:left;
+	z-index:2;
+}
+
+#lift-bar {
+	height:50px;
+}
+
+
+
+
+#lift-bar a.left {
+	color:#1D77EF;
+	float:left;
+	margin-top:15px;
+	margin-right:5px;
+	text-decoration:none;
+	font-weight:400;
+
+	max-height:10px;
+}
+
+#lift-bar a.left img {
+	max-height:15px;
+	margin-left:5px;
+	margin-top:5px;
+}
+
+
+#lift-bar a.right {
+	color:#1D77EF;
+	float:right;
+	margin-top:15px;
+	margin-right:20px;
+	text-decoration:none;
+	font-weight:400;
+
+}
+
+#posture {
+	overflow:hidden;
+	height:220px;
+	width:220px;
+	background:image-url('posture.png');
+	background-size:100% 100%;
+	z-index:1;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#steps {
+	overflow:hidden;
+	height:220px;
+	width:220px;
+	background:image-url('steps.png');
+	background-size:100% 100%;
+	z-index:1;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
+#focus {
+	// display:none;
+	overflow:hidden;
+	height:548px;
+	width:250px;
+	position:absolute;
+	top:0;
+	left:321px;
+	float:left;
+	z-index:2;
+	background:whitesmoke;
+	// padding-top:15px;
+	// padding-top:15px;
+	border-left:1px solid #eee;
+}
+
+#focus a {
+	text-decoration:none;
+	// padding:15px;
+	color:#666;
+	// text-align:center;
+	padding-left:15px;
+	width:100%;
+	display:block;
+	padding-top:15px;
+	
+	// margin-bottom:15px;
+	padding-bottom:15px;
+	border-bottom:1px solid white;
+	border-top:1px solid white;
+	background:#eee;
+}
+
+#focus .description {
+	font-size:12px;
+	margin-left:15px;
+	padding:10px 0px;
+}
+
+// ///////////////////////////////////////
 
 #main-container {
 	max-width:320px;
@@ -34,7 +171,6 @@ body {
 	padding:0;
 	position:relative;
 	top:0;
-
 }
 
 #main-inner {

@@ -1,4 +1,27 @@
 
+$(document).ready(function() {
+    $("#lift-bar a.right").click(function() {
+        event.preventDefault();
+        $("#inner").animate({"left":"-250px"}, "slow");
+       
+    });
+
+  
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// /////////////////////////////////////////////////////
+
 
 $(document).ready(function() {
     $("#focus-bar-main a").click(function() {
@@ -7,6 +30,12 @@ $(document).ready(function() {
         $("#starting").delay(500).fadeIn(500);
          $("#starting").delay(2000).fadeOut(500);
          $("#main-body").delay(3500).fadeIn(500);
+          $("#canvas-container").show(0,function(){
+                            $("#canvas").click(function() {
+                              // animateCircle(1);
+                              animateCircle(1);
+                            });
+                          });
     });
 
     $("#body-container-bar .left-link a").click(function() {
@@ -14,6 +43,15 @@ $(document).ready(function() {
            // $("#starting").hide();
         $("#main-body").fadeOut();
         $("#main-inner").animate({"left":"0px"}, "slow");
+
+    });
+
+     $("#calibrate-bar .left-link a").click(function() {
+        event.preventDefault();
+           // $("#starting").hide();
+       event.preventDefault();
+        $("#calibrate").fadeOut();
+        $("#main-body").fadeIn();
 
     });
 
@@ -53,12 +91,7 @@ $(document).ready(function() {
 
 
                           $("#main-body").delay(2000).fadeIn();
-                          $("#canvas-container").delay(4000).show(0,function(){
-                            $("#canvas").click(function() {
-                              // animateCircle(1);
-                              shakeCircle(1);
-                            });
-                          });
+                         
                         });
                     
                     }
@@ -66,14 +99,6 @@ $(document).ready(function() {
                 }
         });
 
-    //  $("#calibrate-start a").click(function() {
-    //     event.preventDefault();
-    //     $("#calibrate").fadeOut();
-    //     $("#body-container").fadeIn();
-    //      $("#canvas-container").delay(1000).show(0,function(){
-    //           animateCircle(1);
-    //     });
-    // });
 });
 
 var cloneCount = 0;
@@ -85,21 +110,21 @@ function animateCircle(number) {
                                       window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
           window.requestAnimationFrame = requestAnimationFrame;
         })();
-        var time=1;
+        var time=60;
         timer();
         function timer() {
 
              
                    
             }   
-        var canvas = document.getElementById('canvas');
+        var canvas = document.getElementById('canvas'+ cloneCount);
         var context = canvas.getContext('2d');
         var x = canvas.width / 2;
         var y = canvas.height / 2;
         var radius = 75;
-        var endPercent = 60;
-        var curPerc = 0;
-        var counterClockwise = false;
+        var endPercent = 0;
+        var curPerc = 60;
+        var counterClockwise = true;
         var circ = Math.PI * 2;
         var quart = Math.PI / 2;
         context.lineWidth = 5;
@@ -156,11 +181,11 @@ function animateCircle(number) {
              context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
              context.stroke();
 
-             curPerc++;
+             curPerc--;
              // $("#focus-instructions").fadeOut("");
              // $("#focus-instructions div").fadeOut("");
              // $("#focus-instructions div").html(curPerc + " seconds");
-             if (curPerc <= endPercent) {
+             if (curPerc > endPercent) {
                  requestAnimationFrame(function () {
                    
                 
@@ -169,9 +194,9 @@ function animateCircle(number) {
                         if (time >1) var sec = "seconds";
                         else var sec = "second";
                           $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"" +sec).show();
-                          time++;
+                          time--;
                          animate(curPerc / 60);
-                    }, 1000)
+                    }, 100)
                      // animate(curPerc / 60)
                  },1000);
              } else {
