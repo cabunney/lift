@@ -1,12 +1,104 @@
 
+var an = 1; 
 $(document).ready(function() {
-    $("#lift-bar a.right").click(function() {
-        event.preventDefault();
-        $("#inner").animate({"left":"-250px"}, "slow");
-       
-    });
+  $("#lift-bar a.right").click(function() {
+    event.preventDefault();
+    if ($("#inner").css("left") == "0px") {
+      $("#inner").animate({"left":"-250px"}, "slow");
+    } else {
+     $("#inner").animate({"left":"0px"}, "slow");
+   }
+
+ });
+
+    $("#start-stop ").click(function() {
+              event.preventDefault();
+              if (an == 1) {
+                an=0;
+                  $("#lift").animate({
+                                    backgroundColor:"white"
+                                  },100);
+
+                                  $("#body-container-2").animate({
+                                    backgroundColor:"white"
+                                  },100);
+              }
+              else {
+                   $("#lift").animate({
+                                    backgroundColor:"#79c650"
+                                  },2000);
+
+                                  $("#body-container-2").animate({
+                                    backgroundColor:"#79c650"
+                                  },2000);
+                an = 1; 
+              }
+
+
+              animateCircle(0);
+            });
+
 
   
+  $("#start-focus").click(function() {
+    event.preventDefault();
+
+    if ($("#start-focus").css("color") == "rgb(102, 102, 102)") {
+
+      $("#start-focus").animate({
+        "color":"white",
+        backgroundColor:"#1D77EF"
+      }, "medium", function() {
+
+        $("#inner").animate({"left":"0px"}, "slow", function() {
+          $("#lift-focus").fadeIn();
+          $("#starting-focus").fadeIn().delay(2000).fadeOut(function() {
+
+
+                        // $("#main-inner").animate({"left":"-320px"}, "slow");
+
+                        $("#main-body").delay(0).fadeIn(500);
+                        $("#canvas-container").show(0,function(){
+                          $("#canvas").click(function() {
+                                  // animateCircle(1);
+
+
+                                  $("#lift").animate({
+                                    backgroundColor:"#79c650"
+                                  },2000);
+
+                                  $("#body-container-2").animate({
+                                    backgroundColor:"#79c650"
+                                  },2000);
+
+                                  $("#focus-instructions-2").animate({
+                                    // backgroundColor:"#79c650"
+                                  },2000);
+                                  $("#start-stop").show();
+                                  animateCircle(1);
+                                });
+                        });
+
+                      });
+
+});
+});
+
+          // $("#start-focus").css("color","white").css("background","#1D77EF");
+        } else {
+
+          $("#start-focus").animate({
+            "color":"#666",
+            backgroundColor:"#eee"
+          }, "fast",function() {
+            $("#inner").animate({"left":"0px"}, "slow");
+          });
+        }
+
+
+      });
+
+
 
 });
 
@@ -24,116 +116,123 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    $("#focus-bar-main a").click(function() {
-        event.preventDefault();
-        $("#main-inner").animate({"left":"-320px"}, "slow");
-        $("#starting").delay(500).fadeIn(500);
-         $("#starting").delay(2000).fadeOut(500);
-         $("#main-body").delay(3500).fadeIn(500);
-          $("#canvas-container").show(0,function(){
-                            $("#canvas").click(function() {
+  $("#focus-bar-main a").click(function() {
+    event.preventDefault();
+    $("#main-inner").animate({"left":"-320px"}, "slow");
+    $("#starting").delay(500).fadeIn(500);
+    $("#starting").delay(2000).fadeOut(500);
+    $("#main-body").delay(3500).fadeIn(500);
+    $("#canvas-container").show(0,function(){
+      $("#canvas").click(function() {
                               // animateCircle(1);
                               animateCircle(1);
                             });
-                          });
     });
+  });
 
-    $("#body-container-bar .left-link a").click(function() {
-        event.preventDefault();
+  $("#body-container-bar .left-link a").click(function() {
+    event.preventDefault();
            // $("#starting").hide();
-        $("#main-body").fadeOut();
-        $("#main-inner").animate({"left":"0px"}, "slow");
+           $("#main-body").fadeOut();
+           $("#main-inner").animate({"left":"0px"}, "slow");
 
-    });
+         });
 
-     $("#calibrate-bar .left-link a").click(function() {
-        event.preventDefault();
+  $("#calibrate-bar .left-link a").click(function() {
+    event.preventDefault();
            // $("#starting").hide();
-       event.preventDefault();
-        $("#calibrate").fadeOut();
-        $("#main-body").fadeIn();
+           event.preventDefault();
+           $("#calibrate").fadeOut();
+           $("#main-body").fadeIn();
 
-    });
+         });
 
-    $("#body-container-bar .right-link a").click(function() {
-        event.preventDefault();
-        $("#main-body").fadeOut();
-        $("#calibrate").fadeIn();
+  $("#body-container-bar .right-link a").click(function() {
+    event.preventDefault();
+    $("#main-body").fadeOut();
+    $("#calibrate").fadeIn();
         // $("#main-inner").animate({"left":"0px"}, "slow");
-    });
-       $("#calibrate-start a").click(function() {
-            event.preventDefault();
+      });
+  $("#calibrate-start a").click(function() {
+    event.preventDefault();
               // $("#main-inner").animate({"left":"-640px"}, "slow");
               $("#calibrate").fadeOut();
               $("#calibrate-finish").hide();
               $("#dots div").css("background-color","white");
 
-                         $("#calibrate2-instructions").show();
-                          $("#calibrate2-cancel").show();
+              $("#calibrate2-instructions").show();
+              $("#calibrate2-cancel").show();
 
               $("#calibrate2").fadeIn();
               fillDots(1);
               function fillDots(i) {
-                 $(".dot"+i).delay(10).animate({
-                    backgroundColor:'#79c650'
-                  }, 1000, function() {
-                    i=i+1;
-                    if (i <= 5) {
-                    fillDots(i);
-                    } else {
+               $(".dot"+i).delay(10).animate({
+                backgroundColor:'#79c650'
+              }, 1000, function() {
+                i=i+1;
+                if (i <= 5) {
+                  fillDots(i);
+                } else {
                         // $("#calibrate2-bar .middle-title").fadeOut();
                         $("#calibrate2-cancel").fadeOut();
                         $("#calibrate2-instructions").fadeOut(function() {
                           // $("#calibrate2-instructions").html("<div>Finished Calibrating</div>").delay(500).fadeIn();
-                        $("#calibrate-finish").fadeIn();
-                         $("#calibrate2").delay(2000).fadeOut();
+                          $("#calibrate-finish").fadeIn();
+                          $("#calibrate2").delay(2000).fadeOut();
 
 
 
                           $("#main-body").delay(2000).fadeIn();
-                         
+
                         });
-                    
-                    }
-                  });
-                }
-        });
+
+                      }
+                    });
+             }
+           });
 
 });
 
 var cloneCount = 0;
 var timeleft = 5;
+var curPerc = 0;
+var time=1;
+
 
 function animateCircle(number) {
-     (function() {
-          var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-                                      window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-          window.requestAnimationFrame = requestAnimationFrame;
-        })();
-        var time=60;
-        timer();
-        function timer() {
+  (function() {
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.requestAnimationFrame = requestAnimationFrame;
+  })();
 
-             
-                   
-            }   
-        var canvas = document.getElementById('canvas'+ cloneCount);
-        var context = canvas.getContext('2d');
-        var x = canvas.width / 2;
-        var y = canvas.height / 2;
-        var radius = 75;
-        var endPercent = 0;
-        var curPerc = 60;
-        var counterClockwise = true;
-        var circ = Math.PI * 2;
-        var quart = Math.PI / 2;
-        context.lineWidth = 5;
-        context.strokeStyle = '#79c650';
+  timer();
+  function timer() {
+
+
+  } 
+
+  if (number == 1) {
+    curPerc=0; 
+    time=1;
+  }
+
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var x = canvas.width / 2;
+var y = canvas.height / 2;
+var radius = 75;
+var endPercent = 60;
+var counterClockwise = false;
+var circ = Math.PI * 2;
+var quart = Math.PI / 2;
+context.lineWidth = 5;
+context.strokeStyle = '#fff';
         // context.shadowOffsetX = 0;
         // context.shadowOffsetY = 0;
         // context.shadowBlur = 10;
         // context.shadowColor = '#79c650';
-        context.fillStyle='#79c650';
+        context.fillStyle='#fff';
         var full = radius*2;
         var amount = 0;
         var amountToIncrease = 1;
@@ -143,73 +242,74 @@ function animateCircle(number) {
 
 
         function fillDraw() {
-            context.save();
-            context.beginPath();
-            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+          context.save();
+          context.beginPath();
+          context.arc(x, y, radius, 0, 2 * Math.PI, false);
             context.clip(); // Make a clipping region out of this path
             
-            context.fillStyle = '#79c650';
-          
+            context.fillStyle = '#fff';
+
             context.fillRect(x - radius, y + radius, radius * 2, -amount);
             context.restore(); // reset clipping region
 
             context.beginPath();
             context.arc(x, y, radius, 0, 2 * Math.PI, false);
-         
+
             amount += amountToIncrease;
             if (amount > full) {
-                $("#canvas").animate({
-                    marginTop: "350px",
-                    marginLeft:"10px",
-                    height: "50px",
-                    width: "50px"
-                  }, 1000, function() {
+              $("#canvas").animate({
+                marginTop: "350px",
+                marginLeft:"10px",
+                height: "50px",
+                width: "50px"
+              }, 1000, function() {
                     // Animation complete.
-                });
-                clearInterval(intId);
+                  });
+              clearInterval(intId);
                 // animateCircle(2);
+              }
+
             }
-            
-        }
 
 
+          
+            function animate(current) {
+             if (an == 1){
+               context.clearRect(0, 0, canvas.width, canvas.height);
+               context.beginPath();
+               context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+               context.stroke();
 
-         function animate(current) {
-
-             context.clearRect(0, 0, canvas.width, canvas.height);
-             context.beginPath();
-             context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
-             context.stroke();
-
-             curPerc--;
+               curPerc++;
              // $("#focus-instructions").fadeOut("");
              // $("#focus-instructions div").fadeOut("");
              // $("#focus-instructions div").html(curPerc + " seconds");
-             if (curPerc > endPercent) {
-                 requestAnimationFrame(function () {
-                   
-                
-                   
-                    setTimeout(function() {
-                        if (time >1) var sec = "seconds";
-                        else var sec = "second";
-                          $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"" +sec).show();
-                          time--;
-                         animate(curPerc / 60);
-                    }, 100)
+             if (curPerc <= endPercent+1) {
+               requestAnimationFrame(function () {
+
+
+
+                setTimeout(function() {
+                  if (time >1) var sec = "seconds";
+                  else var sec = "second";
+                  $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"" +sec).show();
+                  $("#focus-instructions-2 div").html("<div id='time-sec'>"+time+"</div>" +"" +sec).show();
+                  time++;
+                  animate(curPerc / 60);
+                }, 100)
                      // animate(curPerc / 60)
-                 },1000);
+                   },1000);
              } else {
-                context.fill();
-                time=0;
+              context.fill();
+              time=0;
 
                 // context.stroke();
-               $('#canvas')
-                  .clone()
-                  .attr('id', 'canvas'+ cloneCount)
-                  .appendTo("#canvas-container")
-                  .css("position","absolute")
-                  .css("top","0px");
+                $('#canvas')
+                .clone()
+                .attr('id', 'canvas'+ cloneCount)
+                .appendTo("#canvas-container")
+                .css("position","absolute")
+                .css("top","0px");
                 var destcanvas = document.getElementById('canvas'+cloneCount);
                 var destcontext = destcanvas.getContext('2d');
                 destcontext.drawImage(canvas, 0, 0);
@@ -222,59 +322,64 @@ function animateCircle(number) {
                 // $( "#canvas1" ).clone().appendTo( "#canvas1" );
                 var mL = 10+50*cloneCount;
                 $("#focus-instructions").show();
-                   $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"seconds" ).show();
-
-               $("#canvas"+cloneCount).animate({
-                    marginTop: "350px",
-                    marginLeft:mL+"px",
-                    height: "50px",
-                    width: "50px"
-                  }, 1000, function() {
-                cloneCount++;
+                $("#focus-instructions div").html("<div id='time-sec'>"+time+"</div>" +"seconds" ).show();
+                $("#focus-instructions-2 div").html("<div id='time-sec'>"+time+"</div>" +"seconds" ).show();
 
 
-                if (cloneCount < 6) {
+                $("#canvas"+cloneCount).animate({
+                  marginTop: "338px",
+                  marginLeft:mL+"px",
+                  height: "50px",
+                  width: "50px"
+                }, 1000, function() {
+                  cloneCount++;
+
+
+                  if (cloneCount < 6) {
                    $("#time-left strong").fadeOut(function(){
-                        $("#time-left strong").html(timeleft--).fadeIn();
-                         animateCircle(1);
-                   });
-                 
-                }
-                    // Animation complete.
-                });
+                    $("#time-left strong").html(timeleft--).fadeIn();
+                    animateCircle(1);
+                  });
+                   
+                 }
+                      // Animation complete.
+                    });
                 // intId = setInterval(fillDraw, 10);
 
 
-             }
+              }
+            }
+            }
+
+
+            if (an == 1) animate();
+
+          }
+
+          function shakeCircle(number) {
+           $("#focus-instructions").css("background","transparent");
+           $("#focus-instructions").html("<div class='straightenup'>Sit up straight!</div>");
+
+           $("#main-container").delay(0).animate({ 
+            backgroundColor:"#ffaf4d"
+          }, 3000, "linear");
+
+           $("#main-container").delay(0).animate({
+            backgroundColor:"#ffd19a"
+          }, 3000, "linear");
+
+           $("#main-container").delay(0).animate({
+            backgroundColor:"white"
+          }, 3000, "linear");
+
+
+           function shake(current) {
+
+
+           }
+
+           shake();
          }
-
-         animate();
-    }
-
-  function shakeCircle(number) {
-       $("#focus-instructions").css("background","transparent");
-       $("#focus-instructions").html("<div class='straightenup'>Sit up straight!</div>");
-
-     $("#main-container").delay(0).animate({ 
-          backgroundColor:"#ffaf4d"
-      }, 3000, "linear");
-
-     $("#main-container").delay(0).animate({
-          backgroundColor:"#ffd19a"
-      }, 3000, "linear");
-
-     $("#main-container").delay(0).animate({
-          backgroundColor:"white"
-      }, 3000, "linear");
-     
-     
-       function shake(current) {
-
-          
-       }
-
-       shake();
-  }
 
 
 
@@ -287,60 +392,60 @@ function animateCircle(number) {
 
 function drawpath( offset,canvas, pathstr, duration, attr, callback )
 {
-    var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
-    var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
-    var total_length = guide_path.getTotalLength( guide_path );
-    var last_point = guide_path.getPointAtLength( 0 );
-    var start_time = new Date().getTime();
-    var interval_length = 1000;
-    var result = path;        
+  var guide_path = canvas.path( pathstr ).attr( { stroke: "none", fill: "none" } );
+  var path = canvas.path( guide_path.getSubpath( 0, 1 ) ).attr( attr );
+  var total_length = guide_path.getTotalLength( guide_path );
+  var last_point = guide_path.getPointAtLength( 0 );
+  var start_time = new Date().getTime();
+  var interval_length = 1000;
+  var result = path;        
 
-    var interval_id = setInterval( function()
-    {
-        var elapsed_time = new Date().getTime() - start_time;
-        var this_length = elapsed_time / duration * total_length;
-        var subpathstr = guide_path.getSubpath( 0, this_length );            
-        attr.path = subpathstr;
+  var interval_id = setInterval( function()
+  {
+    var elapsed_time = new Date().getTime() - start_time;
+    var this_length = elapsed_time / duration * total_length;
+    var subpathstr = guide_path.getSubpath( 0, this_length );            
+    attr.path = subpathstr;
 
-        path.animate( attr, interval_length );
-        if (offset>0 && offset<3) {
-            $("#body-container").delay(0).animate({
-                marginLeft: '-=200px'
-            }, 2000, "linear");
-        }
-        else if (offset >= 3) {
-             $("#body-container").delay(0).animate({
-                marginLeft: '-=200px',
-              
-                backgroundColor:"green"
-            }, 2000, "linear");
+    path.animate( attr, interval_length );
+    if (offset>0 && offset<3) {
+      $("#body-container").delay(0).animate({
+        marginLeft: '-=200px'
+      }, 2000, "linear");
+    }
+    else if (offset >= 3) {
+     $("#body-container").delay(0).animate({
+      marginLeft: '-=200px',
 
-        }
+      backgroundColor:"green"
+    }, 2000, "linear");
 
-       
-        if ( elapsed_time >= duration )
-        {
-            clearInterval( interval_id );
-            if ( callback != undefined ) callback();
-                guide_path.remove();
-        }                                       
-    }, interval_length );  
-    return result;
+   }
+
+
+   if ( elapsed_time >= duration )
+   {
+    clearInterval( interval_id );
+    if ( callback != undefined ) callback();
+    guide_path.remove();
+  }                                       
+}, interval_length );  
+  return result;
 }
 
 function draw(offset, paper, width) 
 {
-    var x1=200*offset;
-    var x2=100+200*offset;
-    var x3=x1+200;
+  var x1=200*offset;
+  var x2=100+200*offset;
+  var x3=x1+200;
     // var x4=x2+200;
     var points = 
     [
-        { x: x1, y: 410 },
-        { x: x2, y: 405 },
-        { x: x3, y: 410 }
-       
-       
+    { x: x1, y: 410 },
+    { x: x2, y: 405 },
+    { x: x3, y: 410 }
+
+
     ];
 
     var first = false;
@@ -348,23 +453,23 @@ function draw(offset, paper, width)
 
     var pathstr = generateInterpolatedPath( paper, points, first );
     drawpath( offset,paper, 
-          pathstr, 
-          2000, 
-          { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 }, 
-          function()
-          { 
-            if (offset <= 3) {
+      pathstr, 
+      2000, 
+      { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 }, 
+      function()
+      { 
+        if (offset <= 3) {
 
-                draw(offset+1, paper, width); 
-            } else {
-                drawUp(offset+1, 0, paper,width);
-            }
+          draw(offset+1, paper, width); 
+        } else {
+          drawUp(offset+1, 0, paper,width);
+        }
                 // trigger whatever you want here
-          } );
-}
+              } );
+  }
 
-function drawUp(offset, offsetup, paper, width) 
-{
+  function drawUp(offset, offsetup, paper, width) 
+  {
     var x1=200*offset;
     var x2=100+200*offset;
     var x3=x1+200;
@@ -374,11 +479,11 @@ function drawUp(offset, offsetup, paper, width)
     // var x4=x2+200;
     var points = 
     [
-        { x: x1, y: y1 },
-        { x: x2, y: y2 },
-        { x: x3, y: y3 }
-       
-       
+    { x: x1, y: y1 },
+    { x: x2, y: y2 },
+    { x: x3, y: y3 }
+
+
     ];
 
     var first = false;
@@ -386,21 +491,21 @@ function drawUp(offset, offsetup, paper, width)
 
     var pathstr = generateInterpolatedPath( paper, points, first );
     drawpath( offset,paper, 
-          pathstr, 
-          2000, 
-          { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 }, 
-          function()
-          { 
-          
+      pathstr, 
+      2000, 
+      { stroke: 'black', 'stroke-width': 2, 'stroke-opacity': 1, fill: 'none', 'fill-opacity': 0 }, 
+      function()
+      { 
 
-                drawUp(offset+1, offsetup+1,paper, width); 
-            
+
+        drawUp(offset+1, offsetup+1,paper, width); 
+
                 // trigger whatever you want here
-          } );
-}
+              } );
+  }
 
-function generateInterpolatedPath( paper, points, show_control_points )
-{
+  function generateInterpolatedPath( paper, points, show_control_points )
+  {
     var path_sequence = [];
     path_sequence.push( "M", points[0].x, points[0].y );
     path_sequence.push( "R" );
@@ -408,11 +513,11 @@ function generateInterpolatedPath( paper, points, show_control_points )
 
     for ( var i = 1; i < points.length; i++ )
     {
-        path_sequence.push( points[i].x, points[i].y );
-        show_control_points && paper.circle( points[i].x, points[i].y, 5 ).attr( { fill: 'black' } ).animate( { opacity: 0 }, 30000, function() { this.remove(); } );
+      path_sequence.push( points[i].x, points[i].y );
+      show_control_points && paper.circle( points[i].x, points[i].y, 5 ).attr( { fill: 'black' } ).animate( { opacity: 0 }, 30000, function() { this.remove(); } );
     }
     return path_sequence;
-}
+  }
 
 
 
