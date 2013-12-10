@@ -66,9 +66,9 @@ $(document).ready(function() {
                                   // animateCircle(1);
 
 
-                                  // $("#lift").animate({
-                                  //   backgroundColor:"#79c650"
-                                  // },2000);
+                                  $("#lift").animate({
+                                    backgroundColor:"#79c650"
+                                  },2000);
 
                                   $("#body-container-2").animate({
                                     backgroundColor:"#79c650"
