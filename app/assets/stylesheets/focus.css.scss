@@ -116,13 +116,27 @@ body {
 	overflow:hidden;
 	height:220px;
 	width:220px;
-	background:image-url('steps.png');
+	background-image:image-url('steps.png');
 	background-size:100% 100%;
 	z-index:1;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:20px;
 }
+
+#steps-min {
+	display:none;
+	overflow:hidden;
+	height:220px;
+	width:220px;
+	background-image:image-url('steps_min.png');
+	background-size:100% 100%;
+	z-index:1;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
 
 #focus {
 	// display:none;
@@ -176,7 +190,7 @@ body {
 
 #lift-focus {
 	display:none;
-	height:498px;
+	height:274px;
 	width:320px;
 	position:absolute;
 	top:50px;
@@ -405,7 +419,7 @@ body {
 	// display:none;
 	// width:300px;
 	// overflow:hidden;
-	height:548px;
+	height:280px;
 	position:absolute;
 	top:0;
 	left:0px;
@@ -449,7 +463,7 @@ body {
 }
 
 #canvas {
-	margin-top:-31px;
+	margin-top:-50px;
 }
 
 #focus-instructions {
@@ -477,7 +491,7 @@ body {
 	border-radius:300px;
 	color:#666;
 	position:absolute;
-	top:162px;
+	top:72px;
 	left:85px;
 	text-align:center;
 	border:1px solid #eee;
@@ -514,8 +528,8 @@ body {
 #time-left {
 	text-align:center;
 	width:100%;
-	margin-top:55px;
-	font-size:20px;
+	margin-top:10px;
+	font-size:16px;
 }
 
 #time-left small {

@@ -42,6 +42,9 @@ $(document).ready(function() {
   
   $("#start-focus").click(function() {
     event.preventDefault();
+       $("#lift-focus").fadeIn();
+          $("#steps").hide();
+            $("#steps-min").show();
 
     if ($("#start-focus").css("color") == "rgb(102, 102, 102)") {
 
@@ -51,7 +54,7 @@ $(document).ready(function() {
       }, "medium", function() {
 
         $("#inner").animate({"left":"0px"}, "slow", function() {
-          $("#lift-focus").fadeIn();
+
           $("#starting-focus").fadeIn().delay(2000).fadeOut(function() {
 
 
@@ -63,9 +66,9 @@ $(document).ready(function() {
                                   // animateCircle(1);
 
 
-                                  $("#lift").animate({
-                                    backgroundColor:"#79c650"
-                                  },2000);
+                                  // $("#lift").animate({
+                                  //   backgroundColor:"#79c650"
+                                  // },2000);
 
                                   $("#body-container-2").animate({
                                     backgroundColor:"#79c650"
@@ -327,7 +330,7 @@ context.strokeStyle = '#fff';
 
 
                 $("#canvas"+cloneCount).animate({
-                  marginTop: "338px",
+                  marginTop: "168px",
                   marginLeft:mL+"px",
                   height: "50px",
                   width: "50px"
