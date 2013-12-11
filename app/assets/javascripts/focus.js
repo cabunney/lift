@@ -3,13 +3,13 @@ var an = 1;
 var on = 0; 
 $(document).ready(function() {
 
-  $("#main").swipe({
-  swipeRight:function(event, direction, distance, duration, fingerCount) {
-      $("#inner").animate({"left":"0px"}, "slow");
-      $("#main").removeClass("main-panel");
-    }
+  // $("#main").swipe({
+  //   swipeRight:function(event, direction, distance, duration, fingerCount) {
+  //       $("#inner").animate({"left":"0px"}, "slow");
+  //       $("#main").removeClass("main-panel");
+  //     }
 
-  });
+  // });
 
   // $("#lift").click(function() {
   //   if ($("#inner").css("left") == "-250px") {
