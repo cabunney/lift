@@ -3,15 +3,15 @@ var an = 1;
 var on = 0; 
 $(document).ready(function() {
 
-  $("#main").swipe({
-    swipeLeft:function(event, direction, distance, duration, fingerCount) {
-      $("#inner").animate({"left":"-270px"}, "slow");
+  // $("#main").swipe({
+  //   swipeLeft:function(event, direction, distance, duration, fingerCount) {
+  //     $("#inner").animate({"left":"-270px"}, "slow");
 
-    },  swipeRight:function(event, direction, distance, duration, fingerCount) {
-      $("#inner").animate({"left":"0px"}, "slow");
-    }
+  //   },  swipeRight:function(event, direction, distance, duration, fingerCount) {
+  //     $("#inner").animate({"left":"0px"}, "slow");
+  //   }
 
-  });
+  // });
   $("#lift-bar a.right").click(function() {
     event.preventDefault();
     if ($("#inner").css("left") == "0px") {
