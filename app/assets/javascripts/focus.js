@@ -3,22 +3,30 @@ var an = 1;
 var on = 0; 
 $(document).ready(function() {
 
-  // $("#main").swipe({
-  //   swipeLeft:function(event, direction, distance, duration, fingerCount) {
-  //     $("#inner").animate({"left":"-270px"}, "slow");
+  $("#main").swipe({
+  swipeRight:function(event, direction, distance, duration, fingerCount) {
+      $("#inner").animate({"left":"0px"}, "slow");
+      $("#main").removeClass("main-panel");
+    }
 
-  //   },  swipeRight:function(event, direction, distance, duration, fingerCount) {
-  //     $("#inner").animate({"left":"0px"}, "slow");
-  //   }
+  });
+
+  // $("#lift").click(function() {
+  //   if ($("#inner").css("left") == "-250px") {
+  //     $("#inner").animate({"left":"-0"}, "slow");
+  //   } 
 
   // });
   $("#lift-bar a.right").click(function() {
     event.preventDefault();
     if ($("#inner").css("left") == "0px") {
       $("#inner").animate({"left":"-250px"}, "slow");
+      $("#main").addClass("main-panel");
     } else {
-     $("#inner").animate({"left":"0px"}, "slow");
+      $("#inner").animate({"left":"0px"}, "slow");
+      $("#main").removeClass("main-panel");
    }
+
 
  });
 
