@@ -53,7 +53,7 @@ $(document).ready(function() {
   
   $("#start-focus").click(function() {
     event.preventDefault();
-    if (on == 0) {
+    // if (on == 0) {
     $("#lift-focus").fadeIn();
     $("#steps").hide();
     $("#steps-min").show();
@@ -116,7 +116,7 @@ $(document).ready(function() {
           });
         }
 
-      }
+
       });
 
 
