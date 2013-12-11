@@ -4,7 +4,7 @@
     <div id="lift">
       <div id="lift-bar">
         <a class="left" href="#"><img src='<%=image_url('menu.png')%>'></a>
-        <a class="right" href="#">Focus</a>
+        <a class="right" id="mark" href="#"><img src='<%=image_url('lumo_mark_color.png')%>'></a>
       </div>
       <div id="posture">
       </div>
@@ -41,6 +41,7 @@
 
           <div id="canvas-container">
             <canvas id="canvas" width="300" height="270"></canvas>
+            <div id="mins"></div>
           </div>
         </div>
       </div>
@@ -48,11 +49,17 @@
     </div>
 
     <div id="focus">
-      <a id="start-focus" href="#"><strong>Focus Mode</strong></a>
-      <div class="description">During Focus Mode, Lift will help you discard other distractions and actively coach you towards your daily posture goal by gently vibrating when you slouch.</div>
+      <a id="start-focus" href="#"><strong>PowerUp</strong> 
+        <img class='switch' src='<%=image_url('switch_off.png')%>'>
+        <img class='switch_on' src='<%=image_url('switch_on.png')%>'>
+      </a>
+      <div class="description">During PowerUp, Lift will help you discard other distractions and actively coach you towards your daily posture goal by gently vibrating when you slouch.</div>
+      <div id="focus-settings">
+        <a id="intensity-link" href="#">Vibration Intensity</a>
+        <a id="bpt-link" href="#">Bad Posture Threshold</a>
+      </div>
       <a id="calibrate-link" href="#">Calibrate</a>
-      <a id="intensity-link" href="#">Vibration Intensity</a>
-      <a id="bpt-link" href="#">Bad Posture Threshold</a>
+  
     </div>
 
 

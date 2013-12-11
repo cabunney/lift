@@ -1,6 +1,17 @@
 
 var an = 1; 
+var on = 0; 
 $(document).ready(function() {
+
+  $("#main").swipe({
+    swipeLeft:function(event, direction, distance, duration, fingerCount) {
+      $("#inner").animate({"left":"-270px"}, "slow");
+
+    },  swipeRight:function(event, direction, distance, duration, fingerCount) {
+      $("#inner").animate({"left":"0px"}, "slow");
+    }
+
+  });
   $("#lift-bar a.right").click(function() {
     event.preventDefault();
     if ($("#inner").css("left") == "0px") {
@@ -11,54 +22,61 @@ $(document).ready(function() {
 
  });
 
-    $("#start-stop ").click(function() {
-              event.preventDefault();
-              if (an == 1) {
-                an=0;
-                  $("#lift").animate({
-                                    backgroundColor:"white"
-                                  },100);
+  $("#start-stop ").click(function() {
+    event.preventDefault();
+    if (an == 1) {
+      an=0;
+      $("#lift").animate({
+        backgroundColor:"white"
+      },100);
 
-                                  $("#body-container-2").animate({
-                                    backgroundColor:"white"
-                                  },100);
-              }
-              else {
-                   $("#lift").animate({
-                                    backgroundColor:"#79c650"
-                                  },2000);
+      $("#body-container-2").animate({
+        backgroundColor:"white"
+      },100);
+    }
+    else {
+     $("#lift").animate({
+      backgroundColor:"#79c650"
+    },2000);
 
-                                  $("#body-container-2").animate({
-                                    backgroundColor:"#79c650"
-                                  },2000);
-                an = 1; 
-              }
+     $("#body-container-2").animate({
+      backgroundColor:"#79c650"
+    },2000);
+     an = 1; 
+   }
 
 
-              animateCircle(0);
-            });
+   animateCircle(0);
+ });
 
 
   
   $("#start-focus").click(function() {
     event.preventDefault();
-       $("#lift-focus").fadeIn();
-          $("#steps").hide();
-            $("#steps-min").show();
+    if (on == 0) {
+    $("#lift-focus").fadeIn();
+    $("#steps").hide();
+    $("#steps-min").show();
 
     if ($("#start-focus").css("color") == "rgb(102, 102, 102)") {
 
       $("#start-focus").animate({
-        "color":"white",
-        backgroundColor:"#1D77EF"
+        // "color":"white",
+        // backgroundColor:"#1D77EF"
       }, "medium", function() {
+        $(".switch").hide();
+        $(".switch_on").show();
+        $("#focus-settings").fadeIn(200);
 
-        $("#inner").animate({"left":"0px"}, "slow", function() {
+        $("#inner").animate({
+          // "left":"0px"
+        }, "slow", function() {
 
           $("#starting-focus").fadeIn().delay(2000).fadeOut(function() {
 
 
                         // $("#main-inner").animate({"left":"-320px"}, "slow");
+
 
                         $("#main-body").delay(0).fadeIn(500);
                         $("#canvas-container").show(0,function(){
@@ -98,7 +116,7 @@ $(document).ready(function() {
           });
         }
 
-
+      }
       });
 
 
@@ -220,17 +238,17 @@ function animateCircle(number) {
     time=1;
   }
 
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-var x = canvas.width / 2;
-var y = canvas.height / 2;
-var radius = 75;
-var endPercent = 60;
-var counterClockwise = false;
-var circ = Math.PI * 2;
-var quart = Math.PI / 2;
-context.lineWidth = 5;
-context.strokeStyle = '#fff';
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+  var x = canvas.width / 2;
+  var y = canvas.height / 2;
+  var radius = 75;
+  var endPercent = 60;
+  var counterClockwise = false;
+  var circ = Math.PI * 2;
+  var quart = Math.PI / 2;
+  context.lineWidth = 5;
+  context.strokeStyle = '#fff';
         // context.shadowOffsetX = 0;
         // context.shadowOffsetY = 0;
         // context.shadowBlur = 10;
@@ -275,7 +293,7 @@ context.strokeStyle = '#fff';
             }
 
 
-          
+
             function animate(current) {
              if (an == 1){
                context.clearRect(0, 0, canvas.width, canvas.height);
@@ -303,6 +321,9 @@ context.strokeStyle = '#fff';
                      // animate(curPerc / 60)
                    },1000);
              } else {
+              context.strokeStyle="#79c650";
+                context.lineWidth = 20;
+              context.stroke();
               context.fill();
               time=0;
 
@@ -310,7 +331,7 @@ context.strokeStyle = '#fff';
                 $('#canvas')
                 .clone()
                 .attr('id', 'canvas'+ cloneCount)
-                .appendTo("#canvas-container")
+                .appendTo("#canvas-container #mins")
                 .css("position","absolute")
                 .css("top","0px");
                 var destcanvas = document.getElementById('canvas'+cloneCount);
@@ -333,7 +354,7 @@ context.strokeStyle = '#fff';
                   marginTop: "168px",
                   marginLeft:mL+"px",
                   height: "50px",
-                  width: "50px"
+                  width: "55px"
                 }, 1000, function() {
                   cloneCount++;
 
@@ -352,37 +373,37 @@ context.strokeStyle = '#fff';
 
               }
             }
-            }
-
-
-            if (an == 1) animate();
-
           }
 
-          function shakeCircle(number) {
-           $("#focus-instructions").css("background","transparent");
-           $("#focus-instructions").html("<div class='straightenup'>Sit up straight!</div>");
 
-           $("#main-container").delay(0).animate({ 
-            backgroundColor:"#ffaf4d"
-          }, 3000, "linear");
+          if (an == 1) animate();
 
-           $("#main-container").delay(0).animate({
-            backgroundColor:"#ffd19a"
-          }, 3000, "linear");
+        }
 
-           $("#main-container").delay(0).animate({
-            backgroundColor:"white"
-          }, 3000, "linear");
+        function shakeCircle(number) {
+         $("#focus-instructions").css("background","transparent");
+         $("#focus-instructions").html("<div class='straightenup'>Sit up straight!</div>");
+
+         $("#main-container").delay(0).animate({ 
+          backgroundColor:"#ffaf4d"
+        }, 3000, "linear");
+
+         $("#main-container").delay(0).animate({
+          backgroundColor:"#ffd19a"
+        }, 3000, "linear");
+
+         $("#main-container").delay(0).animate({
+          backgroundColor:"white"
+        }, 3000, "linear");
 
 
-           function shake(current) {
+         function shake(current) {
 
 
-           }
-
-           shake();
          }
+
+         shake();
+       }
 
 
 
